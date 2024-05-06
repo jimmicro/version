@@ -9,13 +9,10 @@ package main
 import (
     "fmt"
 
-    "github.com/jimyag/version-go"
+    _ "github.com/jimyag/version-go"
 )
 
 func main() {
-    if len(os.Args[]) >1 && os.Args[1] == "-v" {
-        fmt.Println("version: ", version.Version())    
-    }
     fmt.Println("hello world")
 }
 
@@ -24,11 +21,17 @@ func main() {
 build with
 
 ```bash
-go build -ldflags="-X github.com/jimyag/version.version=1.0.0"
+go build -ldflags="-X github.com/jimyag/version-go.version=v1.0.0"
 ```
 
 if you use git release/tag you can build with
 
 ```bash
-go build -ldflags="-X github.com/jimyag/version.version=$(git describe --abbrev=0 --tags --always)"
+go build -ldflags="-X github.com/jimyag/version.version=$(git describe --tags --always)"
 ````
+
+enable version cmd
+
+```bash
+go build -ldflags="-X github.com/jimyag/version-go.version=v1.0.0 -X github.com/jimyag/version.enableCmd=true"
+```

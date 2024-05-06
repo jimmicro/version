@@ -7,15 +7,17 @@ import (
 )
 
 const (
-	unknown = "unknown"
-	devel   = "(devel)"
+	unknown  = "unknown"
+	devel    = "(devel)"
+	trueStr  = "true"
+	falseStr = "false"
 )
 
-var version = unknown
-var EnableCmd bool = false
+var version = ""
+var enableCmd string = falseStr
 
 func init() {
-	if !EnableCmd {
+	if enableCmd != trueStr {
 		return
 	}
 	if len(os.Args) > 1 && (os.Args[1] == "-v" || os.Args[1] == "--version") {
@@ -29,11 +31,11 @@ func Version() string {
 		return version
 	}
 	v, ok := buildInfoVersion()
-	if ok {
-		return v
+	if !ok {
+		return unknown
 	}
 	if v == devel {
-		return version
+		return unknown
 	}
 	return version
 }
