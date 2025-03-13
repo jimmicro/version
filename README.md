@@ -9,7 +9,7 @@ package main
 import (
     "fmt"
 
-    _ "github.com/jimyag/version-go"
+    _ "github.com/jimmicro/version"
 )
 
 func main() {
@@ -18,20 +18,13 @@ func main() {
 
 ```
 
-build with
+build with git tag build time and go version
 
 ```bash
-go build -ldflags="-X github.com/jimyag/version-go.version=v1.0.0"
-```
+GIT_TAG=$(git describe --tags --always --dirty="-dev")
+BUILD_TIME=$(TZ='Asia/Shanghai' date "+%Y-%m-%d-%H-%M-%S")
+LDFLAGS="-s -w  -X 'github.com/jimmicro/version.GitTag=$GIT_TAG' \
+    -X 'github.com/jimmicro/version.BuildTime=$BUILD_TIME'"
 
-if you use git release/tag you can build with
-
-```bash
-go build -ldflags="-X github.com/jimyag/version.version=$(git describe --tags --always)"
-````
-
-enable version cmd
-
-```bash
-go build -ldflags="-X github.com/jimyag/version-go.version=v1.0.0 -X github.com/jimyag/version.enableCmd=true"
+go build -ldflags="$LDFLAGS" -o main main.go
 ```

@@ -1,3 +1,3 @@
-module github.com/jimyag/version-go
+module github.com/jimmicro/version
 
-go 1.13
+go 1.11
