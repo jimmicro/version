@@ -48,3 +48,33 @@ LDFLAGS="-s -w  -X 'github.com/jimmicro/version.GitTag=$GIT_TAG' \
 
 go build -ldflags="$LDFLAGS" -o main main.go
 ```
+
+## Development
+
+Run the package checks with plain Go commands:
+
+```bash
+go test ./...
+go vet ./...
+```
+
+Or use the included `Taskfile`:
+
+```bash
+task deps
+task lint
+task test
+task build
+```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Security
+
+See [SECURITY.md](SECURITY.md).
+
+## Code of Conduct
+
+See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
