@@ -1,5 +1,7 @@
 # version
 
+[![Check](https://github.com/jimmicro/version/actions/workflows/check.yaml/badge.svg)](https://github.com/jimmicro/version/actions/workflows/check.yaml)
+
 The "version" package is a utility that facilitates setting and retrieving the version during the compilation process. It provides a convenient way to manage and identify different versions of a software project. By using the "version" package, developers can automate the process of setting version numbers during the build and easily retrieve the current version when needed.
 
 ## Usage
@@ -51,11 +53,11 @@ go build -ldflags="$LDFLAGS" -o main main.go
 
 ## Development
 
-Run the package checks with plain Go commands:
+Run the package checks locally:
 
 ```bash
 go test ./...
-go vet ./...
+golangci-lint run ./...
 ```
 
 Or use the included `Taskfile`:
