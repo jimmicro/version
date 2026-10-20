@@ -42,7 +42,7 @@ You can use plain Go commands:
 
 ```bash
 go test ./...
-go vet ./...
+golangci-lint run ./...
 ```
 
 Or use `Taskfile` helpers:
@@ -56,7 +56,7 @@ task build
 
 ## Code Style
 
-- Format with `gofmt`
+- Format with `golangci-lint fmt`
 - Keep imports organized
-- Pass `go vet` and `staticcheck`
+- Pass `golangci-lint run ./...` (new issues only)
 - Add tests for behavior changes
